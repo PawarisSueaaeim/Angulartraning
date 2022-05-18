@@ -14,8 +14,9 @@
             <h3>input your size</h3>
             <input type="text" placeholder="size" [formControl]="sizeInput">
             <input type="text" placeholder="time" [formControl]="timeInput">
-            <input type="submit" (click)="onSubmit()"><br><br>
-            <input type="text" placeholder="number of module" [(ngModel)]="module">
+            <input type="submit" (click)="onSubmit()" value="ยืนยัน"><br><br>
+            <input type="text" placeholder="number of module" [(ngModel)]="module"><br><br>
+            <input type="submit" (click)="calculate()" value="คำนวน">
             <table>
                 <thead>
                     <tr>
@@ -24,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let list of myObject; let i = index">
+                    <tr *ngFor="let list of reversedObject; let i = index">
                         <td>{{list.weight}}</td>
                         <td>{{list.time}}</td>
                     </tr>
@@ -34,6 +35,21 @@
         <div>
             ระยะเวลารวมทั้งหมด: {{sumTime}}
             ระยะเวลาที่มาสามารถทำได้ที่น้อยที่สุด: {{timeBar}}
+            จำนวน Module : {{module}}
+            <table>
+                <thead>
+                    <tr>
+                        <td>module</td>
+                        <td>Quere</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <input type="submit" value="สร้างคิว" (click)="generate()">
+                    <tr>
+                        <td></td>
+                    </tr> -->
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
