@@ -51,29 +51,24 @@ export class DashBoardComponent implements OnInit {
     let temp: any = [];
     let sumOfmodule = 0;
     
-    for(let i = 0; i < this.module ; i++) {
-      for(let j = 0 ; j<this.reversedObject.length ; i++){
-        temp = this.myObject.pop();
+    for(let j = 0 ; j<this.reversedObject.length ; j++){
+      temp = this.myObject.pop();
+      if(temp != undefined){
         console.log("time " + temp.time)
-        // if(Number(temp.time)+sumOfmodule<=cal){
-        //   this.popTest.push(temp)
-        //   sumOfmodule = this.popTest.map(a => Number(a.time)).reduce(function(a,b) {
-        //     return a + b
-        //   })
-        // }else{
-        //   this.pushPopTest.push(this.popTest)
-        //   this.popTest.splice(0);
-        //   sumOfmodule = 0;
-        //   this.popTest.push(temp)
-        // }
-        // console.log("sum of module " + sumOfmodule)
+        if(Number(temp.time)+sumOfmodule<=(Math.ceil(cal))){
+          this.popTest.push(temp)
+          sumOfmodule = this.popTest.map(a => Number(a.time)).reduce(function(a,b) {
+            return a + b
+          })
+        }else{
+          this.pushPopTest.push(this.popTest)
+          this.popTest.splice(0);
+          sumOfmodule = 0;
+          this.popTest.push(temp)
+        }
+        console.log("sum of module " + sumOfmodule)
       }
-      console.log("this is module"+ this.pushPopTest)
     }
-    // console.log(sum)
-    // console.log(cal)
-    // console.log(this.myObject)
-    // console.log(this.reversedObject) 
   }
 }
 
